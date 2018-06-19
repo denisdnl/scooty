@@ -1,0 +1,126 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="home-container">
+  <template>
+    <style>
+      :host {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          flex-basis: auto;
+          justify-content: space-around;
+		  padding:0 60px 0 60px;
+      }
+
+     .item{
+      text-align: center;
+      min-height: 300px;
+	  flex:1;
+      padding: 0 10px 0 10px;
+     }
+     
+     .item img{
+        width:60px;
+        height: 60px;
+        transition: 0.3s;
+     }
+
+     .item:hover img{
+        width:65px;
+        height: 65px;
+        opacity: 0.8;
+     }
+
+     .title{
+      font-size:20px;
+      font-family: "Roboto Slab","Times New Roman",serif;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+     }
+
+     .text{
+          color: #999;
+          font-weight: 300;
+          font-size: 16px;
+          -webkit-font-smoothing: antialiased;
+          line-height: 1.618;
+          text-align: left;
+     }
+
+     @media only screen and (max-width: 680px) {
+	 
+	  :host{
+		padding:0 20px 0 20px;
+	  }
+	 
+    .item{
+    min-width: 100%;
+		flex:0;
+    margin-top: 20px;
+    }
+
+      .item.v{
+        
+      }
+     }
+
+    </style>
+  
+  <div class="item">
+    <img src="/src/escooter-app/assets/efficient_icon.svg"/>
+    <div class="title">Eficient</div>
+    <div class="text">Viziteaza Brasovul fara efort, cu 25km autonomie electrica.
+                      Poti incarca trotineta la o priza normala
+                      sau in timp ce bei un suc intr-una din locatiile partenere.
+                      Mai mult, trotineta se incarca in timpul franarii sau mersului manual
+    </div>
+  </div>
+  <div class="item v">
+    <img src="/src/escooter-app/assets/easy_icon.svg"/>
+    <div class="title">Usor</div>
+    <div class="text">Foloseste aplicatia si descopera atractiile din jur,
+      construieste-ti traseul, gaseste locuri de reincarcare.</br>
+      Calculeaza cat vei putea merge complet electric sau sa vei face miscare.
+    </div>
+  </div>
+
+  <div class="item v">
+    <img src="/src/escooter-app/assets/scooter_icon.png"/>
+    <div class="title">Accesibil</div>
+    <div class="text">Cel mai ieftin mijloc de transport motorizat<br/>
+                      Poti ajunge rapid oriunde.<br/>
+                      Evita aglomeratia din trafic.
+    </div>
+  </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class HomeContainer extends Polymer.Element {
+      static get is() { return 'home-container'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        
+      }
+
+      constructor(){
+        super();
+      }
+
+  }
+
+    window.customElements.define(HomeContainer.is, HomeContainer);
+  </script>
+</dom-module>

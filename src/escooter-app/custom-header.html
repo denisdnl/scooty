@@ -1,0 +1,273 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="custom-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding:0;
+        margin:0;
+        position: fixed;
+        top: 0;
+        left:0;
+        z-index:2000;
+      }
+
+      .header{
+        width:100vw;
+        background-color: transparent;
+        color:white;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding:25px 95px 10px 95px;
+        transition: padding 0.3s;
+        letter-spacing: 1px;
+        box-sizing: border-box;
+      }
+
+      .header.scrolled{
+        background-color: white;
+        color:#777;
+        padding:10px 95px 10px 95px;
+        box-shadow: 0 10px 20px -12px rgba(0,0,0,.42), 0 3px 20px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,0.05);
+      }
+
+      .header.scrolled .side.left span{
+        opacity:1;
+      }
+
+      .side{
+        flex:1;
+        font-size: 20px;
+        font-weight: 300;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        padding-top: 10px;
+      }
+
+      .side.right{
+        text-align: right;    
+      }
+
+      .side.left span{
+        opacity: 0.8;
+        transition: opacity 0.7s;
+      }
+
+      .side.left span:hover{
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      
+      .side.right li{
+        display: inline-block;
+        transition: color 0.2s;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        margin-left:5px;
+        margin-right: 5px;
+        padding-left:10px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+      }
+
+      .side.right li:hover{
+        color:#F3005E;
+      }
+
+      .header:not(.scrolled) .side.right li:hover{
+        border-radius: 5px;
+        background-color: rgba(255,255,255,0.2);
+
+      }
+
+      .side.right ul{
+        margin: 0;
+        list-style-type: none;
+        display: inline-block;
+        padding: 0;
+      }
+
+      .menu-icon{
+        display: none;
+      }
+
+      .menu-icon div{
+        width: 20px;
+        height: 3px;
+        background-color: #777;
+        margin: 3px 0;
+      }
+
+      .flag{
+        width: 20px;
+        height: 13px;
+        cursor: pointer;
+        margin-right: 3px;
+        vertical-align: bottom;
+        padding-bottom: 8.5px;
+        display: inline-block;
+      }
+
+      .flag ul{
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .flag-item{
+        display: inline-block !important;
+        padding: 0px;
+        margin-right: 0px;
+        width: 20px;
+        height: 17px;
+        cursor: pointer;
+      }
+
+      .lang-div{
+        padding: 20px 0px 0px 0px;
+        transition: height 0.3s;
+        overflow: hidden;
+      }
+
+      .lang-div.show{
+        height: 80px;
+      }
+
+      .lang-div.hide{
+        height: 0;
+      }
+
+
+      .flag-item img{
+        width: 100%;
+        height: 100%;
+      }
+
+      @media only screen and (max-width: 680px) {
+      .header {
+        background-color: white;
+        color:#777;
+        padding:20px 20px 20px 20px;
+      }
+      .header.scrolled {
+        background-color: white;
+        color:#777;
+        padding:10px 20px 10px 20px;
+      }
+      .side{
+        font-size: 18px;
+      }
+
+      .side.right .menu-list{
+        display: none;
+      }
+
+      .menu-icon{
+        display: inline-block;
+      }
+
+
+      .flag{
+        width: 20px;
+        height: 17px;
+        cursor: pointer;
+        margin-right: 10px;
+        vertical-align: top;
+        padding: 0;
+        padding-top: 1px;
+        display: inline-block;
+      }
+    }
+
+    a{
+      text-decoration: none;
+      color:inherit;
+    }
+
+    </style>
+    
+  <div class="header">
+    <div class="side left">
+      <span>eScooter</span>
+    </div>
+    <div class="side right">
+      <div class="flag">
+      <img on-click="toggleLangMenu" class="flag" src="/src/escooter-app/assets/romanian_flag.png">
+        <div class="lang-div hide"><img class="flag-item" src="/src/escooter-app/assets/romanian_flag.png">
+        <img style="margin-top:5px;"class="flag-item" src="/src/escooter-app/assets/english_flag.png"></div>
+      </div>
+      <ul class="menu-list">
+        <li on-click="clickMenu" selector="#home">Acasa</li>
+        <li on-click="clickMenu" selector="#contact">Contact</li>
+        <li on-click="clickMenu" selector="#about">Despre</li>
+        <li>Aplicatie</li>
+      </ul>
+      <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class CustomHeader extends Polymer.Element {
+      static get is() { return 'custom-header'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        window.addEventListener("scroll",this.onScroll);
+      }
+
+      constructor(){
+        super();
+      }
+
+      onScroll(e){
+        if(this.scrollY > 10)
+          this.document.querySelector("escooter-app").root.querySelector("custom-header").root.querySelector(".header").classList.add("scrolled");
+        else
+          this.document.querySelector("escooter-app").root.querySelector("custom-header").root.querySelector(".header").classList.remove("scrolled");
+      }
+
+      toggleLangMenu(){
+        if(this.root.querySelector(".lang-div").classList.contains("hide")){
+          this.root.querySelector(".lang-div").classList.remove("hide");
+          this.root.querySelector(".lang-div").classList.add("show");
+        }
+        else{
+          this.root.querySelector(".lang-div").classList.remove("show");
+          this.root.querySelector(".lang-div").classList.add("hide");
+        }
+      }
+
+
+      clickMenu(e){
+        let selector = e.target.getAttribute("selector");
+        if(selector == '#about')
+          window.location = "about.html";
+
+        document.querySelector("escooter-app").root.querySelector(selector).scrollIntoView({ block: 'start',  behavior: 'smooth' });
+        
+      }
+    
+  }
+
+    window.customElements.define(CustomHeader.is, CustomHeader);
+  </script>
+</dom-module>

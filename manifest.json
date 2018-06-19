@@ -1,0 +1,6 @@
+{
+  "name": "eScooter",
+  "short_name": "eScooter",
+  "start_url": "/",
+  "display": "standalone"
+}

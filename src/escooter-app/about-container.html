@@ -1,0 +1,364 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-avatar/paper-avatar.html">
+
+<dom-module id="about-container">
+  <template>
+    <style>
+
+
+    @keyframes active-anim {
+    from {opacity: 0;}
+    to {opacity: 1;}
+    }
+      :host{
+        display: block;
+        margin-top:70px;
+		-webkit-font-smoothing: antialiased;
+		padding: 0 60px 0 60px;
+      }
+      .container {
+          display: block;
+      }
+
+
+
+     
+      .title{
+        color:#FE0058;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .title div{
+        background-color:#FE0058;
+        width: 4px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+	  .price-table{
+		width:100%;
+		border:0;
+		text-align:left;
+	  }
+     
+	 .price-title{
+	    color:black;
+      font-size:20px;
+      font-family: "Roboto Slab","Times New Roman",serif;
+      font-weight: 700;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      letter-spacing: 1px;
+	 }
+	 
+	 .price-time, .price{
+	   color: #999;
+       font-weight: 300;
+       font-size: 16px;
+       -webkit-font-smoothing: antialiased;
+       line-height: 1.518;	
+	 }
+	 
+	 .tabs{
+		display:flex;
+		flex-direction:row;
+		flex-wrap:no-wrap;
+		margin:0;
+		padding:0;
+		list-style:none;
+	 }
+	 
+	 .tabs li{
+    flex: 1;
+		text-align:center;
+		font-family: "Roboto","Helvetica","Arial",sans-serif;
+		font-weight: 550;
+		padding: 15px 25px 15px 25px;
+		transition:opacity 0.3s;
+		font-size:14px;
+	 }
+	 
+
+	 .tabs li.active{
+		color: #555;
+		border: 1px solid #ddd;
+		border-top: 2px solid #FE0058;
+		border-bottom: none;
+	 }
+	 
+	 .tabs li:not(.active){
+		opacity: 0.5;
+		border-bottom: 1px solid #ddd;
+	 }
+	 
+	.tabs li:not(.active):hover{
+		opacity: 1;
+	 }
+	 
+	 .tabs li:hover{
+		cursor:pointer;
+	 }
+
+
+   .tabs img{
+     width:30px;
+     height: 30px;
+   }
+	 
+	 .content-container{
+    width: calc(100% - 2px);
+		border-bottom: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+	 }
+
+   .page{
+     width: 100%;
+     min-height: 200px;
+     transition: opacity 1s;
+     display: block;
+     opacity: 1;
+     color:rgb(53, 52, 52);
+    font-size:16px;
+    font-family: "Roboto Slab","Times New Roman",serif;
+      
+
+   }
+
+   .page p{
+     padding-right:30px;
+     text-align: left !important;
+     font-size: 16px;
+   }
+
+  .page li{
+    text-align: left !important;
+    padding-top: 10px;
+  }
+   .page:not(.active){
+     opacity: 0;
+     display: none;
+   }
+
+   .page.active{
+    animation-name: active-anim;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+   }
+
+   .page .title{
+      color:black;
+      font-size:16px;
+      font-family: "Roboto Slab","Times New Roman",serif;
+      font-weight: 550;
+      padding-top:20px;
+      padding-bottom: 10px;
+      margin-left: 20px;
+      -webkit-font-smoothing: antialiased;
+      margin-bottom: 0 !important;
+      text-align: left;
+   }
+
+   hr{
+     margin-left: 20px;
+     margin-right: 20px;
+   }
+
+   .ct{
+     display: flex;
+     flex-direction: row;
+     padding-right: 20px;
+     padding-left: 20px;
+     padding-top: 20px;
+     padding-bottom: 20px;
+   }
+
+   .ct div{
+     flex:1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+   }
+
+     .ct div img{
+       align-self: center;
+   }
+
+   .side-img{
+     display: block;
+     width:100%;
+     height: 100%;
+   }
+     
+     @media only screen and (max-width: 680px) {
+        :host{
+          margin-top: 70px;
+		  padding: 0 20px 0 20px;
+        }
+
+        .side{
+          width:100%;
+          flex:none;
+        }
+
+        .side.left{
+          order: 2;
+        }
+
+        .title div{
+          display: none;
+        }
+
+
+        *{
+        text-align: center !important;
+        }
+
+        .ct{
+        flex-direction: column-reverse;
+        }
+
+        .page p{
+          padding-right: 0px;
+        }
+
+        .price-title{
+          text-align: center;
+        }
+    }
+
+    </style>
+    <div class="title"><div></div>Despre noi</div>
+    <div class="container">
+    <div class="side left">
+		<ul class="tabs">
+			<li class="active" on-click="clickTab" tab="#how-system"><img src="/src/escooter-app/assets/wrench.svg"/></li>
+			<li on-click="clickTab" tab="#how-app"><img src="/src/escooter-app/assets/mobile-alt.svg"/></li>
+			<li on-click="clickTab" tab="#rules"><img src="/src/escooter-app/assets/newspaper.svg"/></li>
+		</ul>
+    </div>
+	<div class="content-container">
+    <div class="page active" id="how-system">
+      <div class="title">CUM FUNCTIONEAZA</div>
+      <hr/>
+      <div class="ct">
+        <div><p>La <em><strong>Scooty</strong> </em>incercam sa iti facem vizitarea Brasovului o experienta memorabila.
+          Doar vii la noi, inchiriezi trotineta electrica si ai la picioare o autonomie de <em><strong>25 km</strong></em> fara efort. Totul intr-un mod ecologic si economic.</p>
+          <p>Cu noi scapi de aglomeratie, ajungi rapid la toate obiectivele tale la un cost de peste 2 ori mai mic decat al unui taxi. In plus, ai libertatea sa te opresti cand vrei pentru a admira imprejurimile.</p>
+          <p>Unde mai punem distractia de a te plimba alaturi de cei dragi pe un mijloc de transport atat de fun?</p>
+          <p>Nu iti ajung cei 25 km autonomie? Nicio problema...</p>
+          <p>Daca ramai fara curent o poti folosi ca pe o trotineta clasica, incarcandu-se in acest timp. Sau in timp ce bei un suc alaturi de prieteni, o poti lua cu tine fiind usor de pliat si incarca la o priza normala. Ea se incarca cam pentru 15km intr-o ora.&nbsp;</p>
+          <p>Practice, robuste, prietenoase, trotinetele noastre te vor face sa te indragostesti de ele.</p>
+          <p>Vezi cum te poate ajuta aplicatia in tabul urmator</p></div>
+        <div><img class="side-img" src="https://amp.businessinsider.com/images/57068402dd089546168b48a4-750-500.jpg"/></div>
+      </div>
+    </div>
+    <div class="page" id="how-app">
+        <div class="title">CUM FUNCTIONEAZA</div>
+        <hr/>
+        <div class="ct">
+      <div><p>La <em><strong>Scooty</strong> </em>incercam sa iti facem vizitarea Brasovului o experienta memorabila.</p>
+        <p>Doar vii la noi, inchiriezi trotineta electrica si ai la picioare o autonomie de <em><strong>25 km</strong></em> fara efort. Totul intr-un mod ecologic si economic.</p>
+        <p>Cu noi scapi de aglomeratie, ajungi rapid la toate obiectivele tale la un cost de peste 2 ori mai mic decat al unui taxi. In plus, ai libertatea sa te opresti cand vrei pentru a admira imprejurimile.</p>
+        <p>Unde mai punem distractia de a te plimba alaturi de cei dragi pe un mijloc de transport atat de fun?
+        Nu iti ajung cei 25 km autonomie? Nicio problema...</p>
+        <p>Daca ramai fara curent o poti folosi ca pe o trotineta clasica, incarcandu-se in acest timp. Sau in timp ce bei un suc alaturi de prieteni, o poti lua cu tine fiind usor de pliat si incarca la o priza normala. Ea se incarca cam pentru 15km intr-o ora.
+        Practice, robuste, prietenoase, trotinetele noastre te vor face sa te indragostesti de ele.</p>
+        <p>Vezi cum te poate ajuta aplicatia in tabul urmator</p></div>
+      <div><img class="side-img" src="https://amp.businessinsider.com/images/57068402dd089546168b48a4-750-500.jpg"/></div>
+      </div>
+    </div>
+    <div class="page" id="rules">
+        <div class="title">REGULI</div>
+        <hr/>
+        <div class="ct">
+      <div><p>La <em><strong>Scooty</strong> </em> vrem sa te bucuri de plimbare intr-un mod sigur</p>
+        <p>Asa ca iti prezentam cateva din reguli. Regulamentul complet poate fi accesat <a href="">aici</a></p>
+        <ul>
+          <li>Nu se ofera serviciile clientilor sub influenta substantelor alcoolice/stupefiante</li>
+          <li>Orice defectiune ce nu e provocata din neglijenta, de exemplu defectiuni la motor, pana de cauciuc, etc este suportata integral de noi. Tu doar trebuie sa ne anunti</li>
+          <li>Autonomia vehiculelor variaza in functie de multi factori. Noi doar spunem valorile ideale. De aceea recomandam sa se ia un buffer de 2-3KM.</li>
+          <li>In caz de furt/distrugere intentionata clientul va suporta dauna. Pentru a evita astfel de situatii noi va punem la dispozitie lanturi antifurt. Recomandam sa luati tricicleta cu dumneavoastra sau sa o lasati intr-un loc pazit.</li>
+            </ul>
+      </div>
+      <div><img style="width:100px;height:100px;" src="https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-50-128.png"/></div>
+      </div>
+      <div class="ct">
+          <div><img style="width:100px;height:100px;" src="https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-50-128.png"/></div>
+          <div>
+          <ul>
+            <li>Sunt interzise acrobatiile, trecerea peste borduri de peste 10 cm</li>
+            <li>Depasirea timpului va duce la taxarea suplimentara in pachete de 2 ore.</li>
+            <li>Siguranta este importanta. De aceea noi intretinem starea echipamentelor. Nu ne asumam accidentele cauzate de nerespectarea reglementarilor rutiere</li>
+          </ul>
+        </div>
+        </div>
+        
+        </div>
+    </div>
+  </div>
+    <div class="side right">
+		<table class="price-table">
+			<tr><td class="price-title" colspan="3">Preturi</tr>
+			<tr><td class="price-time">2 ore</td><td class="price-time">O zi</td><td class="price-time">O luna</td></tr>
+			<tr><td class="price">20 RON(5 EUR)</td><td class="price">30 RON(7 EUR)</td><td class="price">300RON(70 EUR)</td></tr>
+		</table>
+    </div>  
+    </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class AboutContainer extends Polymer.Element {
+      static get is() { return 'about-container'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        
+      }
+
+      constructor(){
+        super();
+      }
+	  
+	  clickTab(e){
+
+    var selector = null;
+		this.root.querySelector(".tabs").childNodes.forEach(a=>{
+																	if(a.classList !== undefined)
+																		a.classList.remove("active");
+																});
+
+    if(e.target.tagName.toUpperCase() == 'LI'){
+		e.target.classList.add("active");
+    selector = e.target.getAttribute("tab");
+    }
+    else{
+    e.target.parentElement.classList.add("active");
+    selector = e.target.parentElement.getAttribute("tab");
+    }
+
+
+    this.root.querySelectorAll(".page").forEach(a=>{a.classList.remove("active");});
+    this.root.querySelector(selector).classList.add("active");
+	  }
+
+  }
+
+    window.customElements.define(AboutContainer.is, AboutContainer);
+  </script>
+</dom-module>

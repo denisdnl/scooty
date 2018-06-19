@@ -1,0 +1,220 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="contact-container">
+  <template>
+    <style>
+      :host{
+        display: block;
+        margin-top:60px;
+		    padding:0 0px 0 0px;
+        
+      }
+      .container {
+          
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          flex-basis: auto;
+          text-align: left;
+          background: url('https://demot-vertigostudio.netdna-ssl.com/hestia-pro/wp-content/uploads/sites/92/2018/01/contact.jpg');
+          background-attachment: fixed;
+      }
+
+      .side{
+        flex:1;
+        background: rgba(0, 0, 0, 0.603);
+        padding: 100px 60px 100px 60px;
+      }
+
+      iframe{
+        width: 100%;
+        min-height: 400px;
+        display: block;        
+      }
+
+      .title{
+        color:#FE0058;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .title div{
+        background-color:#FE0058;
+        width: 4px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+
+     .container .primary_title{
+       color:rgba(255, 255, 255, 1);
+       font-family: "Roboto Slab","Times New Roman",serif;
+       font-weight: 700;
+       font-size: 37px;
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       letter-spacing: 1px;
+     }
+     .container .title{
+      color:white;
+      font-size:22px;
+      font-family: "Roboto Slab","Times New Roman",serif;
+      font-weight: 700;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-align: left;
+      padding-left:10px;
+     }
+
+     .container .text{
+          color:#ccc;;
+          font-weight: 300;
+          font-size: 18px;
+          -webkit-font-smoothing: antialiased;
+          line-height: 1.618;
+          text-align: left;
+          padding-left:10px;
+     }
+
+     .right{
+       display: flex;
+       justify-content: center;
+     }
+
+      .contact-form{
+        align-self: center;
+        background-color: white;
+        border-radius: 10px;
+        padding:55px 35px 55px 35px;
+      }
+
+     .contact-form *{
+        display: block;
+        margin-top: 5px;
+        width:200px;
+     }
+
+     
+     .contact-form *:not([type="submit"]){
+        border-width:0px 0px 1px 0px;
+        border-color:#FE0058;
+        padding: 10px;
+        margin-top:7px;
+     }
+
+    
+
+    [type="submit"]{
+      border-radius: 5px;
+      border:0;
+      color: white;
+      background-color: #FE0058;
+      cursor: pointer;
+      height: 30px;
+      margin:20px 0 0 0 !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+     @media only screen and (max-width: 680px) {
+        :host{
+          margin-top: 15px;
+          text-align: center !important;
+        }
+
+        .side{
+          width:100%;
+          flex:none;
+          padding: 100px 0 0 0;
+        }
+
+
+        .title div{
+          display: none;
+        }
+
+        .contact-form{
+          border-radius: 0;
+        }
+
+      iframe{
+        width: 100%;
+        height: 300px;
+      }
+
+      *{
+        text-align: center !important;
+      }
+
+
+      .contact-form *{
+        display: inline-block;
+      }
+     }
+
+    </style>
+
+    <div class="container">
+    <div class="side left">
+    <div class="primary_title">CONTACT</div>
+    <div class="title">Punct de inchiriere</div>
+    <div class="text">Strada Centrala, nr 15, Brasov<br/>
+                      In parcarea 2
+    </div>
+    <div style="height:25px;width:100%;"></div>
+    <div class="title">Sediu social</div>
+    <div class="text">Strada Centrala, nr 15, Brasov<br/>
+                      In parcarea 2
+    </div>
+
+    
+    </div>
+    <div class="side right">
+        <form action = "" class="contact-form">
+            <input type="text" placeholder="Nume Prenume"/>
+            <input type="email" placeholder="email@email.com"/>
+            <input type="phone" placeholder="Telefon"/>
+            <textarea rows="5" placeholder="Mesaj..."></textarea>
+            <input type="submit" value="Trimite"/>
+          </form>
+    </div> 
+    </div>
+    <iframe
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDYelW2w_XokQo4c46aHwHghbVyz0FwgD8&q=Brasov">
+    </iframe>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class ContactContainer extends Polymer.Element {
+      static get is() { return 'contact-container'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        
+      }
+
+      constructor(){
+        super();
+      }
+
+  }
+
+    window.customElements.define(ContactContainer.is, ContactContainer);
+  </script>
+</dom-module>

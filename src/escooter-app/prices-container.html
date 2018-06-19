@@ -1,0 +1,146 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="prices-container">
+  <template>
+    <style>
+      :host{
+        display: block;
+		    padding:0 0px 0 0px;
+        background: #F0F0F0;
+        width: 100%;
+        min-height: 200px;
+      }
+      .container {
+          width:100%;
+      }
+
+      .primary-title{
+        font-size: 36px;
+        color: rgb(61, 69, 78);
+        font-family: "Roboto Slab","Times New Roman",serif;
+        font-weight: 700;
+        padding-top:100px;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      .prices-container{
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-basis: auto;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-bottom: 100px;
+      }
+      
+      .item{
+        background: white;
+        border-radius:10px;
+        width:200px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.09), 0 3px 1px -2px rgba(0,0,0,.06), 0 1px 5px 0 rgba(0,0,0,0.02);
+        padding:30px 10px 30px 10px;
+      }      
+
+      .item .title{
+        margin-bottom: 30px;
+        color: #3C4858;
+        font-family: "Roboto Slab","Times New Roman",serif;
+        font-weight: 700;
+        font-size:24px;
+      }
+
+      .item .price{
+        color: #3C4858;
+        font-family: "Roboto Slab","Times New Roman",serif;
+        font-weight: 700;
+        font-size:24px;
+      }
+
+      .item .text{
+        margin-bottom:30px;
+        color: #999999;
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-size:14px;
+        height: 70px;
+      }
+
+      hr{
+        background:rgba(254, 0, 89, 0.685);
+        height: 3px;
+        border-width: 0 0 0 0;
+        width:50%;
+        margin-bottom: 25px;
+        border-radius: 5px;
+      }
+
+     @media only screen and (max-width: 680px) {
+        :host{
+
+        }
+
+        .item{
+          width:75%;
+          margin-bottom: 25px;
+        }
+
+     }
+
+    </style>
+
+    <div class="container">
+      <div class="primary-title">Preturi</div>
+      <div class="prices-container">
+
+        <div class="item">
+          <hr/>
+          <div class="title">2 ore</div>
+          <div class="text">Cam pentru o incarcare</div>
+          <div class="price">20RON</div>
+        </div>
+        <div class="item">
+            <hr/>
+            <div class="title">1 zi</div>
+            <div class="text">Toata ziua. Fa-ti programul asa cum vrei</div>
+            <div class="price">35RON</div>
+        </div>
+        <div class="item">
+            <hr/>
+              <div class="title">1 saptamana</div>
+              <div class="text">Inchiriaza pe termen lung. Foloseste-o ca mijloc de transport principal</div>
+              <div class="price">200RON</div>
+        </div>  
+
+      </div>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class PricesContainer extends Polymer.Element {
+      static get is() { return 'prices-container'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        
+      }
+
+      constructor(){
+        super();
+      }
+
+  }
+
+    window.customElements.define(PricesContainer.is, PricesContainer);
+  </script>
+</dom-module>

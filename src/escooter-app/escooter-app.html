@@ -1,0 +1,319 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="custom-header.html">
+<link rel="import" href="home-container.html">
+<link rel="import" href="contact-container.html">
+<link rel="import" href="about-container.html">
+<link rel="import" href="prices-container.html">
+<link rel="import" href="custom-footer.html">
+
+<dom-module id="escooter-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding:0;
+        margin:0;
+        scroll-behavior: smooth;
+        user-select: none;
+      }
+
+      .carousel{
+        height:90vh;
+        width:100vw;
+        overflow:hidden;
+        position: absolute;
+        top:0;
+        left:0;
+      }
+
+      .carousel .carousel-content{
+        height:100%;
+        width:500vw;
+        display: flex;
+        flex-direction: row;
+        top: 0;
+        left: 0;
+        position: absolute;
+        transition: left 0.5s;
+      }
+
+      .carousel .item{
+        height:100%;
+        width:100vw;
+        position: relative;
+      }
+
+      .carousel .item img{
+        object-fit: cover;
+      }
+
+      .carousel .overlay{
+        width:100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.35);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .nav{
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index:100;
+        margin:0px 95px 0px 95px;
+      }
+
+      .nav.left{
+        left:0;
+      }
+      .nav.right{
+        right:0;
+      }
+
+  .nav div{
+    color:white;
+    position: absolute;
+    font-weight: bold;
+    font-size:50px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    font:normal normal normal FontAwesome;
+   }
+
+   .nav div:hover{
+     opacity: 0.8;
+     cursor:pointer;
+   }
+
+   .nav.left div{
+    top:50%;
+    left:50%;
+   }
+
+   .nav.right div{
+    top:50%;
+    right:50%;
+   }
+
+  .notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  }
+
+  .overlay-content{
+    position: absolute;
+    top:50%;
+    left:50vw;
+    transform: translate(-50%,-50%);
+    z-index: 250;
+    text-align: center;
+  }
+
+  .overlay-content *{
+    display: block;
+    text-align: center;
+  }
+
+  .overlay-content .title{
+    color:white;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 67px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 20px;
+    cursor:default;
+  }
+
+  .overlay-content .text{
+    color:white;
+    font-family:  "Roboto Slab","Times New Roman",serif;
+    font-size: 19px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 50px;
+    cursor:default;
+  }
+
+  .overlay-content a{
+    border-radius: 5px;
+    color: white;
+    background-color: #F3005E;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 13px 20px 13px 20px;
+  }
+
+  .content-wrapper{
+    position: absolute;
+    top:83vh;
+    text-align: center;
+    z-index: 250;
+    box-sizing: border-box;
+    width: 100wv;
+    overflow-x: hidden;
+    max-width:100%;
+  }
+  .main-container{
+    border-radius: 5px 5px 0px 0px;
+    background-color: white;
+    width:96%;
+    box-shadow: 0 6px 14px 0 rgba(0,0,0,0.3);
+    padding: 80px 0px 0px 0px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+
+  home-container{
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  custom-footer{
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media only screen and (max-width: 680px) {
+      .nav{
+        margin:0px 20px 0px 20px;
+      }
+
+      .overlay-content .title{
+        font-size: 35px;
+      }
+
+      .overlay-content .text{
+        margin-bottom: 40px;
+        font-size: 14px;
+      }
+
+      .overlay-content a{
+        font-size: 14px;
+        padding: 11px 18px 11px 18px;
+      }
+
+    .content-wrapper{
+    position: absolute;
+    z-index: 250;   
+    top:90vh;
+    width:100%;
+    }
+    
+    .main-container{
+    border-radius: 0px;
+    background-color: white;
+    width:100%;
+    box-shadow: none;
+    padding: 35px 0px 0px 0px;
+    box-sizing: border-box;
+    }
+  }
+
+    </style>
+    <custom-header></custom-header>
+    <div class="carousel" id="home">
+        
+        <div class="left nav">
+          <div on-click="prevSlide" on-tap="prevSlide"><</div>
+        </div>
+        <div class="carousel-content">
+        <div class="item">
+          <img src="/src/escooter-app/assets/slider1.jpg" style="height: 100%;width:100%" />
+          <div class="overlay">
+            <div class="overlay-content">
+              <span class="title">Distractiv</span>
+              <span class="text">Viziteaza Brasovul fara efort. Foloseste aplicatia ghid</span>
+              <a href="#asasd">Descopera</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/src/escooter-app/assets/slider2.jpg" style="height: 100%;width:100%" />
+          <div class="overlay">
+            <div class="overlay-content">
+              <span class="title">Ecologic</span>
+              <span class="text">Folorim doar surse regenerabile. Zero emisii</span>
+              <a href="#asasd">Descopera</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/src/escooter-app/assets/slider3.jpg" style="height: 100%;width:100%" />
+          <div class="overlay">
+            <div class="overlay-content">
+              <span class="title">Avantajos</span>
+              <span class="text">Fa-ti traseul asa cum doresti la un cost redus</span>
+              <a href="#asasd">Descopera</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right nav">
+          <div on-click="nextSlide">></div>
+      </div>
+    </div>
+  <div class="content-wrapper">
+    <div class="main-container">
+      <home-container></home-container>
+      <contact-container id="contact"></contact-container>
+      <prices-container></prices-container>
+    <custom-footer></custom-footer>  
+  </div>
+    
+  </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class EscooterApp extends Polymer.Element {
+      static get is() { return 'escooter-app'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+      }
+
+      constructor(){
+        super();
+        this.currentSlide = 0;
+      }
+
+      prevSlide(e){
+        this.currentSlide = this.currentSlide - 1;
+        
+        if(this.currentSlide < 0 ){
+          this.currentSlide = 0;
+        }
+
+        this.root.querySelector(".carousel-content").style.left = "-"+100*this.currentSlide+"vw";
+      }
+      
+
+      nextSlide(e){
+        this.currentSlide = this.currentSlide + 1;
+        
+        if(this.currentSlide > 2 ){
+          this.currentSlide = 2;
+      }
+
+       this.root.querySelector(".carousel-content").style.left = "-"+100*this.currentSlide+"vw";
+    }
+
+  }
+
+    window.customElements.define(EscooterApp.is, EscooterApp);
+  </script>
+</dom-module>

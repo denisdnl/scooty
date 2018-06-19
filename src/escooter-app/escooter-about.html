@@ -1,0 +1,261 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="custom-header.html">
+
+<dom-module id="escooter-about">
+  <template>
+    <style>
+      
+      :host {
+        display: block;
+        padding:0;
+        margin:0;
+        scroll-behavior: smooth;
+        user-select: none;
+      }
+
+      custom-header{
+        height: 75px;
+      }
+      .container{
+          width:500vw;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          left:0;
+          overflow: hidden;
+      }
+
+      .background{
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          top:0;
+          right: 0;
+          transition: right 1.5s;
+      }
+
+      .nav{
+        height: 100vh;
+        padding: 20px;
+        position: absolute;
+        z-index:200;
+        top:0;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .nav.left{
+        left:0;
+      }
+
+      .nav.right{
+        left: calc(100vw - 50px);
+      }
+
+      .nav span{
+        display: block;
+        align-self: center;
+        color:white;
+        font-size:24px;
+        font-weight: 700;
+      }
+
+      .nav span:hover{
+        cursor: pointer;
+      }
+
+      .text-container{
+        height: 100vh;
+        position: absolute;
+        z-index: 100;
+        top:0;
+        left:-100vw;
+        transition:all 0.7s;
+      }
+
+      .page{
+        width: 100vw;
+        height: 100%;
+        float:left;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      .content{
+        background: rgba(0, 0, 0, 0.63);
+        padding: 60px;
+        color:white;
+        max-width: 300px;
+        border-radius: 10px;
+      }
+
+      .c1{
+        margin-top:100px;
+        align-self: flex-start;
+      }
+
+      .c2{
+        align-self: flex-end;
+        margin-bottom: 50px;
+      }
+      
+      
+  @media only screen and (max-width: 680px) {
+      .text-container{
+        margin: 0;
+      }
+
+      .content{
+        border-radius: 0;
+        align-self: stretch;
+      }
+      
+      .c1{
+        margin-top:75px;
+      }
+
+      .page{
+        overflow: scroll;
+      }
+
+      .c2{
+        padding-top:30px;
+        margin-bottom: 0;
+      }
+      
+  }
+
+    </style>
+    <custom-header></custom-header>
+    <div class="container">
+        <img class="background" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Cologne_-_Panoramic_Image_of_the_old_town_at_dusk.jpg"/>
+        <div class="nav left"><span on-click="prevSlide">&lt;</span></div>
+        <div class="nav right"><span on-click="nextSlide">&gt;</span></div>
+        <div class="text-container">
+          <div class="page">
+          <div class="content c1">
+            <div class="title">Cum functioneaza?</div>
+            <div class="text">
+              <p>La <em><strong>Scooty</strong> </em>incercam sa iti facem vizitarea Brasovului o experienta memorabila.
+                Doar vii la noi, inchiriezi trotineta electrica si ai la picioare o autonomie de <em><strong>25 km</strong></em> fara efort. Totul intr-un mod ecologic si economic.</p>
+                <p>Cu noi scapi de aglomeratie, ajungi rapid la toate obiectivele tale la un cost de peste 2 ori mai mic decat al unui taxi. In plus, ai libertatea sa te opresti cand vrei pentru a admira imprejurimile.</p> 
+            </div>
+          </div>
+          <div class="content c2">
+            <div class="title">Cum functioneaza?</div>
+            <div class="text">
+              <p>Nu iti ajung cei 25 km autonomie? Nicio problema...</p>
+              <p>Daca ramai fara curent o poti folosi ca pe o trotineta clasica, incarcandu-se in acest timp. Sau in timp ce bei un suc alaturi de prieteni, o poti lua cu tine fiind usor de pliat si incarca la o priza normala. Ea se incarca cam pentru 15km intr-o ora.&nbsp;</p>
+              <p>Practice, robuste, prietenoase, trotinetele noastre te vor face sa te indragostesti de ele.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page">
+          <div class="content c1">
+            <div class="title">Reguli</div>
+            <div class="text">
+              <ul>
+                <li>Nu se ofera serviciile clientilor sub influenta substantelor alcoolice/stupefiante</li>
+                <li>Orice defectiune ce nu e provocata din neglijenta, de exemplu defectiuni la motor, pana de cauciuc, etc este suportata integral de noi. Tu doar trebuie sa ne anunti</li>
+                <li>Autonomia vehiculelor variaza in functie de multi factori. Noi doar spunem valorile ideale. De aceea recomandam sa se ia un buffer de 2-3KM.</li>
+                <li>In caz de furt/distrugere intentionata clientul va suporta dauna. Pentru a evita astfel de situatii noi va punem la dispozitie lanturi antifurt. Recomandam sa luati tricicleta cu dumneavoastra sau sa o lasati intr-un loc pazit.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="content c2">
+            <div class="title">Reguli</div>
+            <div class="text">
+              <ul>
+                <li>Sunt interzise acrobatiile, trecerea peste borduri de peste 10 cm</li>
+                <li>Depasirea timpului va duce la taxarea suplimentara in pachete de 2 ore.</li>
+                <li>Siguranta este importanta. De aceea noi intretinem starea echipamentelor. Nu ne asumam accidentele cauzate de nerespectarea reglementarilor rutiere</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class EscooterAbout extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'escooter-about'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        Polymer.Gestures.addListener(this, 'track', e => this.trackHandler(e));
+      }
+
+      constructor(){
+        super();
+        this.currentSlide = 0;
+        this.canSwipe = true;
+        this.numberSlides = 2;
+      }
+
+
+  trackHandler(e){
+    if(e.detail.state == 'end' && Math.abs(e.detail.dy) < 50 && Math.abs(e.detail.dx) > 30){
+      let el = window.document.querySelector("escooter-about");
+      el.handleMovement(e.detail.dx,0,el);
+    }
+  }
+
+  handleMovement(deltaX,deltaY,el){
+    el.canSwipe = false;
+
+
+    if(deltaY > 0 || deltaX > 0){
+        if(el.currentSlide < this.numberSlides-1)
+        el.currentSlide++;
+    }
+
+    if(deltaY < 0 || deltaX < 0){
+        if(el.currentSlide > 0)
+        el.currentSlide--;
+    }
+
+    let bkgWidth = el.root.querySelector(".background").offsetWidth;
+    el.root.querySelector(".background").style.right =  this.currentSlide/(this.numberSlides+1) * bkgWidth + "px";
+    let cntWidth = el.root.querySelector(".text-container").offsetWidth;
+    el.root.querySelector(".text-container").style.left =  -(this.numberSlides - this.currentSlide-1)/(this.numberSlides) * cntWidth + "px";
+
+  }
+
+  handleScroll(e){
+    let el = window.document.querySelector("escooter-about");
+    if(el.canSwipe == true)
+    el.handleMovement(e.deltaX,e.deltaY,el);
+  }
+
+
+  nextSlide(){
+    let el = window.document.querySelector("escooter-about");
+    this.handleMovement(0,1,el);
+  } 
+
+  prevSlide(){
+    let el = window.document.querySelector("escooter-about");
+    this.handleMovement(0,-1,el);
+  } 
+
+
+}
+    window.customElements.define(EscooterAbout.is, EscooterAbout);
+  </script>
+</dom-module>

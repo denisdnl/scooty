@@ -1,0 +1,160 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="custom-footer">
+  <template>
+    <style>
+      :host {
+          width: 100%;
+          height: 100%;
+          background:#4B4B4B;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          flex-basis: auto;
+          justify-content: space-around;
+		      padding:30px 60px 30px 60px;
+      }
+
+    .item{
+      text-align: center;
+	    flex:1;
+      padding: 0 10px 0 10px;
+      color: rgb(199, 199, 199);
+      font-family:  "Roboto Slab","Times New Roman",serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: 13px;
+     }
+
+     table{
+       margin:auto;
+     }
+
+     .item img{
+       height: 20px;
+       width: 20px;
+       opacity: 0.7;
+       transition: opacity 0.4s;
+     }
+     
+
+     .item img:hover{
+       opacity: 1;
+     }
+
+     td{
+       padding: 5px;
+     }
+
+
+     .link-section *{
+       padding: 5px 0 0px 0;
+       text-align: center;
+     }
+     .link-section a{
+       display: block;
+       text-decoration: none;
+       color: rgb(199, 199, 199);
+       font-size: 12px;
+     }
+
+
+     .link-section a:hover{
+       text-decoration: underline;
+     }
+
+     .weather_img{
+       width: 70px !important;
+       height: 70px !important;
+       border: 0;
+     }
+
+     .weather_img:not([src]){ display:none; }
+
+     .temp_div{
+       font-size: 16px !important;
+     }
+
+     @media only screen and (max-width: 680px) {
+    .item{
+    min-width: 100%;
+		flex:0;
+    margin-top: 20px;
+    }
+
+    .temp_div{
+      margin-top:15px;
+    }
+  }
+
+    </style>
+  
+  <div class="item">
+    <div style="margin-bottom:20px;padding-top:5px">&copy; 2018 <b>Scooty</b></div>
+    <table>
+      <tr>
+          <td><a href=""><img src="/src/escooter-app/assets/fb.svg"/></a></td>
+          <td><a href=""><img src="/src/escooter-app/assets/email.svg"/></a></td>
+      </tr>
+      <tr>
+          <td><a href=""><img src="/src/escooter-app/assets/phone.svg"/></a></td>
+          <td><a href=""><img src="/src/escooter-app/assets/instagram.svg"/></a></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="item link-section">
+    <div style="margin-bottom:20px;">DESCHIS 09-20</div>
+    <a href="home.html"/>ANPC</a>
+    <a href="home.html"/>BrasovCity</a>
+    <a href="home.html"/>TripAdvisor</a>
+    <a href="home.html"/>Termeni & Conditii</a>
+  </div>
+
+  <div class="item">
+    <div class="temp_div">[[temp]]</div>
+    <div><img class="weather_img" src="{{icon_url}}"/></div>
+  </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    
+    class CustomFooter extends Polymer.Element {
+      static get is() { return 'custom-footer'; }
+      static get properties() {
+        return {
+        
+        };
+      }
+
+      ready(){
+        super.ready();
+        window.onload = function(){
+          
+          let xhttp = new XMLHttpRequest();
+
+          xhttp.onload = function(e){
+              var obj = JSON.parse(e.currentTarget.responseText);
+              this.temp = ""+(obj.main.temp_max).toFixed(0) +"℃  "+ obj.weather[0].main;
+              this.icon_url = "http://openweathermap.org/img/w/"+obj.weather[0].icon+".png";
+          }.bind(this);
+
+          xhttp.open("GET","https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=Brasov");
+          xhttp.send();
+          
+
+        }.bind(this);
+      }
+
+      constructor(){
+        super();
+      }
+
+  }
+
+    window.customElements.define(CustomFooter.is, CustomFooter);
+  </script>
+</dom-module>
